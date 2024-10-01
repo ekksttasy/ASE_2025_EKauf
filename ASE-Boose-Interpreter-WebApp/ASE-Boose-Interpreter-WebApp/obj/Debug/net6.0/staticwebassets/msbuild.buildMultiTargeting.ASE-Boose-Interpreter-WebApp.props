@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ASE-Boose-Interpreter-WebApp.props" />
+</Project>

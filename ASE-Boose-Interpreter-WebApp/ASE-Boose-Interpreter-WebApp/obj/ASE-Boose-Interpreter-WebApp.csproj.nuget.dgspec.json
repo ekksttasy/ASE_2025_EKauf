@@ -1,0 +1,89 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\evask\\source\\repos\\ase-boose-assignment-ekksttasy\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\evask\\source\\repos\\ase-boose-assignment-ekksttasy\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\evask\\source\\repos\\ase-boose-assignment-ekksttasy\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp.csproj",
+        "projectName": "ASE-Boose-Interpreter-WebApp",
+        "projectPath": "C:\\Users\\evask\\source\\repos\\ase-boose-assignment-ekksttasy\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp.csproj",
+        "packagesPath": "C:\\Users\\evask\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\evask\\source\\repos\\ase-boose-assignment-ekksttasy\\ASE-Boose-Interpreter-WebApp\\ASE-Boose-Interpreter-WebApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\evask\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[6.0.23, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.23, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+              "version": "[6.0.23, 6.0.23]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

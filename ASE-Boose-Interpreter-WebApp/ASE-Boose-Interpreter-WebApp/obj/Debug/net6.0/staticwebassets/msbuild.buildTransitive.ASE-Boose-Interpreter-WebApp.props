@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\ASE-Boose-Interpreter-WebApp.props" />
+</Project>
