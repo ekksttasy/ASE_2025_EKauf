@@ -196,13 +196,13 @@
       "mscorlib.dll": "sha256-jzikATOUXZ4ADvFQ16S0KGAR1MWeQw31aXXccUFs08w=",
       "netstandard.dll": "sha256-87jtKWKXMg3nXj8D1mLQabI+cTWOPvy5ll3sBYj\/ZhI=",
       "System.Private.CoreLib.dll": "sha256-gjd6M5pA\/nOZEI8pvs9SPUAFG1Jppwr9Xl6v7Wab8Fc=",
-      "ASE-Boose-Interpreter-WebApp.dll": "sha256-+nfFeWkrM41Hn6Rx2ncm4CQMXUyyoqrQmP3BoEk0Zsg="
+      "ASE-Boose-Interpreter-WebApp.dll": "sha256-o3dcaaqVAJtHhBm6wcg\/6oMtrYNBZ4VqL1+PvQBpDKY="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "ASE-Boose-Interpreter-WebApp.pdb": "sha256-TgC1rvzqbAmYEzoaBDDaoHSIReMStkJddQBON3WzTBg="
+      "ASE-Boose-Interpreter-WebApp.pdb": "sha256-LSDGi2XLr2k+5Ea6PVLx6OE9p0guvo9zHs8QVdcCcLw="
     },
     "runtime": {
       "dotnet.6.0.23.12bm6olruw.js": "sha256-YYG9NE7FnTlr1qMbQzBTzUGZOcLX64xP2Z1+An1jT6U=",
