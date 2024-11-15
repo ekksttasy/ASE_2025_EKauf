@@ -12,15 +12,18 @@ namespace ASE_Project_Ekauf
     /// </summary>
     public class AppCanvas : ICanvas
     {
-        private Color pColor;
+        private object pColor;
         private Pen myPen;
         private int x_Pos, y_Pos;
-        Graphics g;
+        //Graphics g; 
+
         static int mapX = 256;
         static int mapY = 256;
-        Bitmap booseMap = new Bitmap(mapX, mapY);
-        
-        public Color PenColour
+
+        Graphics g = Graphics.FromImage(new Bitmap(mapX, mapY));
+        object booseMap = new object(); //(mapX, mapY);
+
+        public object PenColour
         {
             //retrieve/change pen color
             get
@@ -36,9 +39,9 @@ namespace ASE_Project_Ekauf
             }
         }
 
-    public void SetColour(int red, int green, int blue)
+        public void SetColour(int red, int green, int blue)
         {
-            
+
         }
         public int Xpos
         {
@@ -58,7 +61,7 @@ namespace ASE_Project_Ekauf
             // pen Y position
             get
             {
-                return y_Pos;   
+                return y_Pos;
             }
             set
             {
@@ -116,9 +119,14 @@ namespace ASE_Project_Ekauf
             //this.
         }
 
-        public Bitmap getBitmap()
+        public object getBitmap()
         {
-            return booseMap; 
+            return booseMap;
+        }
+
+        public static implicit operator Image(AppCanvas v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

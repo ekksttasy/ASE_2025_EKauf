@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <BaseOutputPath>C:\Users\evask\source\repos\ase-boose-assignment-ekksttasy\ASE_Project_Ekauf\ASE_Project_Ekauf\bin\Debug\net6.0-windows</BaseOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
