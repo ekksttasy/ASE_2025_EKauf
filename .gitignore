@@ -2,4 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/ASE_Project_Ekauf/ASE_Project_Ekauf/README.md
+.vs
+ASE-Boose-Interpreter-WebApp\ASE-Boose-Interpreter-WebApp\bin
+ASE-Boose-Interpreter-WebApp\ASE-Boose-Interpreter-WebApp\obj
