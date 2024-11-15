@@ -26,7 +26,7 @@ namespace ASE_Project_Ekauf
             }
             public static string about();
         }
-        
+
         public TextBox BooseInput
         {
             get;
@@ -38,6 +38,11 @@ namespace ASE_Project_Ekauf
             Debug.WriteLine(AboutBOOSE.about());
             BooseCanvas = new AppCanvas();
             BooseInput = new TextBox();
+
+        }
+
+        private void InitializeComponent()
+        {
 
         }
     }

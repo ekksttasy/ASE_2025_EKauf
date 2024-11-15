@@ -16,7 +16,7 @@ namespace ASE_Project_Ekauf
         private Pen myPen;
         private int x_Pos, y_Pos;
         
-        public Color PenColor
+        public Color PenColour
         {
             get
             {
@@ -29,6 +29,11 @@ namespace ASE_Project_Ekauf
                     pColor = value;
                 }
             }
+        }
+
+    public void SetColour(int red, int green, int blue)
+        {
+
         }
         public int Xpos
         {
@@ -52,6 +57,56 @@ namespace ASE_Project_Ekauf
             {
                 y_Pos = value;
             }
+        }
+
+        public void Clear()
+        {
+
+        }
+
+        public void Reset()
+        {
+
+        }
+
+        public void Set(int width, int height)
+        {
+
+        }
+
+        public void DrawTo(int x, int y)
+        {
+
+        }
+
+        public void MoveTo(int x, int y)
+        {
+
+        }
+
+        public void WriteText(string text)
+        {
+
+        }
+
+        public void Circle(int radius, bool filled)
+        {
+
+        }
+
+        public void Rect(int width, int height, bool filled)
+        {
+
+        }
+
+        public void Tri(int width, int height)
+        {
+
+        }
+
+        public void getBitmap()
+        {
+            return object; //help
         }
     }
 }
