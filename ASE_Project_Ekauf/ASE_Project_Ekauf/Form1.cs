@@ -36,7 +36,7 @@ namespace ASE_Project_Ekauf
         {
             InitializeComponent();
             Debug.WriteLine(AboutBOOSE.about());
-            BooseCanvas = new AppCanvas();
+            AppCanvas BooseCanvas = new AppCanvas();
             BooseInput = new TextBox();
 
         }

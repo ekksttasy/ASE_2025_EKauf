@@ -15,9 +15,14 @@ namespace ASE_Project_Ekauf
         private Color pColor;
         private Pen myPen;
         private int x_Pos, y_Pos;
+        Graphics g;
+        static int mapX = 256;
+        static int mapY = 256;
+        Bitmap booseMap = new Bitmap(mapX, mapY);
         
         public Color PenColour
         {
+            //retrieve/change pen color
             get
             {
                 return pColor;
@@ -33,10 +38,11 @@ namespace ASE_Project_Ekauf
 
     public void SetColour(int red, int green, int blue)
         {
-
+            
         }
         public int Xpos
         {
+            //pen X position
             get
             {
                 return x_Pos;
@@ -49,6 +55,7 @@ namespace ASE_Project_Ekauf
 
         public int Ypos
         {
+            // pen Y position
             get
             {
                 return y_Pos;   
@@ -61,27 +68,32 @@ namespace ASE_Project_Ekauf
 
         public void Clear()
         {
-
+            //clear bitmap to default color
         }
 
         public void Reset()
         {
-
+            //return pen to (0,0)
         }
 
         public void Set(int width, int height)
         {
-
+            int mapX = width;
+            int mapY = height;
         }
 
         public void DrawTo(int x, int y)
         {
-
+            //draw a line from previous pen position to specified pen position
+            this.x_Pos = x;
+            this.y_Pos = y;
         }
 
         public void MoveTo(int x, int y)
         {
-
+            //move pen to specified position
+            this.x_Pos = x;
+            this.y_Pos = y;
         }
 
         public void WriteText(string text)
@@ -101,12 +113,12 @@ namespace ASE_Project_Ekauf
 
         public void Tri(int width, int height)
         {
-
+            //this.
         }
 
-        public void getBitmap()
+        public Bitmap getBitmap()
         {
-            return object; //help
+            return booseMap; 
         }
     }
 }
