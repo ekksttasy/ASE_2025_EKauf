@@ -12,12 +12,13 @@ namespace ASE_Project_Ekauf
     /// <summary>
     /// Class implements ICanvas from Boose to render Boose code on form.
     /// </summary>
-    public class AppCanvas : ICanvas
+    public class AppCanvas : Canvas, ICanvas
     {
         private object pColor;
         private Pen myPen;
         private int x_Pos = 0;
-        private int y_Pos = 0; 
+        private int y_Pos = 0;
+        private Color background_color = Color.Gray;
 
         static int mapX = 256;
         static int mapY = 256;
@@ -25,54 +26,63 @@ namespace ASE_Project_Ekauf
         Font defaultFont = new Font("Arial", 16, FontStyle.Bold);
 
         Graphics g = Graphics.FromImage(new Bitmap(mapX, mapY));
-        private object booseMap;
+        public object booseMap;
 
-        public object PenColour
+        public AppCanvas(Color background_color)
+        {
+            this.background_colour = background_color;  
+        }
+
+        public override object PenColour
         {
             //retrieve/change pen color
             get;
             set;
         }
 
-        public void SetColour(int red, int green, int blue)
+        public override void SetColour(int red, int green, int blue)
         {
             pColor = Color.FromArgb(red, green, blue);
             Debug.WriteLine("Color is set to RGB {pcolor}");
         }
-        public int Xpos
+        public override int Xpos
         {
             //pen X position
             get;
             set;
         }
 
-        public int Ypos
+        public override int Ypos
         {
             // pen Y position
             get;
             set;
         }
 
-        public void Clear()
+        public override void Clear()
         {
-            //clear bitmap to default color
+            //clear bitmap to default color (assuming white)
+            using (Graphics g = Graphics.FromImage((Bitmap)booseMap))
+            {
+                g.Clear(background_color); 
+            }
         }
 
-        public void Reset()
+        public override void Reset()
         {
             //return pen to (0,0)
             x_Pos = 0;
             y_Pos = 0;
         }
 
-        public void Set(int width, int height)
+        public override void Set(int width, int height)
         {
             //set display size of output window
             int mapX = width;
             int mapY = height;
         }
 
-        public void DrawTo(int x, int y)
+        public override void DrawTo(int x, int y)
         {
             //draw a line from previous pen position to specified pen position
             g.DrawLine(myPen, x_Pos, y_Pos, x, y);
@@ -81,7 +91,7 @@ namespace ASE_Project_Ekauf
             y_Pos = y;
         }
 
-        public void MoveTo(int x, int y)
+        public override void MoveTo(int x, int y)
         {
             //move pen to specified position
             x_Pos = x;
@@ -94,27 +104,27 @@ namespace ASE_Project_Ekauf
             g.DrawString(text, defaultFont, brush, x_Pos, y_Pos);
         }
 
-        public void Circle(int radius, bool filled)
+        public override void Circle(int radius, bool filled)
         {
             //draws a circle from pen position
             Circle myCircle = new Circle((Color)pColor, x_Pos, y_Pos, radius);
             myCircle.Draw(g, myPen, filled);
         }
 
-        public void Rect(int width, int height, bool filled)
+        public override void Rect(int width, int height, bool filled)
         {
             //draws a rectangle from pen position
             Rect myRect = new Rect((Color)pColor, x_Pos, y_Pos, width, height);
             myRect.Draw(g, myPen, filled);
         }
 
-        public void Tri(int width, int height)
+        public override void Tri(int width, int height)
         {
             //draws a triangle from pen position
             Debug.WriteLine("Triangle method not yet implemented");
         }
 
-        public object getBitmap()
+        public override object getBitmap()
         {
             return booseMap;
         }
