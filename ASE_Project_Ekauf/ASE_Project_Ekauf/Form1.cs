@@ -36,14 +36,14 @@ namespace ASE_Project_Ekauf
             //Debug.WriteLine(AboutBOOSE.about());
             AppCanvas BooseCanvas = new AppCanvas();
             pictureBox1.Image = BooseCanvas;
-            pictureBox1.SizeMode = SizeMode.StretchImage;
+            //pictureBox1.SizeMode = SizeMode.StretchImage;
             // BooseInput = new TextBox();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string uInput = BooseInput.Text;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
