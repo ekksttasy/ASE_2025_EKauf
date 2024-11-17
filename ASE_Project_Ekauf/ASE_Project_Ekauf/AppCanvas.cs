@@ -17,8 +17,7 @@ namespace ASE_Project_Ekauf
         private object pColor;
         private Pen myPen;
         private int x_Pos = 0;
-        private int y_Pos = 0;
-        //Graphics g; 
+        private int y_Pos = 0; 
 
         static int mapX = 256;
         static int mapY = 256;
@@ -105,11 +104,14 @@ namespace ASE_Project_Ekauf
         public void Rect(int width, int height, bool filled)
         {
             //draws a rectangle from pen position
+            Rect myRect = new Rect((Color)pColor, x_Pos, y_Pos, width, height);
+            myRect.Draw(g, myPen, filled);
         }
 
         public void Tri(int width, int height)
         {
             //draws a triangle from pen position
+            Debug.WriteLine("Triangle method not yet implemented");
         }
 
         public object getBitmap()

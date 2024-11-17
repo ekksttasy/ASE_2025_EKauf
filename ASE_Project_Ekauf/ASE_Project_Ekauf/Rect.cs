@@ -8,21 +8,24 @@ using BOOSE;
 namespace ASE_Project_Ekauf
 {
     /// <summary>
-    /// Circle constructor to draw a perfect circle.
+    /// Rectangle class to draw rectangles or squares.
     /// </summary>
-    internal class Circle : Shape
+    internal class Rect : Shape
     {
-        protected int radius; // radius of circle to be drawn
+        protected int width;
+        protected int height;
         /// <summary>
-        /// Constructor for creating perfect circles.
+        /// Constructor for creating rectangles.
         /// </summary>
         /// <param name="color"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <param name="radius"></param>
-        public Circle(Color color, int x, int y, int radius) : base(color, x, y)
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public Rect(Color color, int x, int y, int width, int height) : base(color, x, y)
         {
-            this.radius = radius;
+            this.width = width;
+            this.height = height;
         }
 
         /// <summary>
@@ -33,7 +36,7 @@ namespace ASE_Project_Ekauf
         /// <param name="filled"></param>
         public void Draw(Graphics g, Pen pen, bool filled)
         {
-            g.DrawEllipse(pen, this.x, this.y, (this.radius*2), (this.radius*2));
+            g.DrawRectangle(pen, x, y, width, height);
         }
     }
 }
