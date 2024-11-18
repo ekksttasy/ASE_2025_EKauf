@@ -29,7 +29,7 @@ namespace ASE_Project_Ekauf
 
             searchUInput(uInput, BooseCanvas); //run boose code
             pictureBox1.Image = (Bitmap)BooseCanvas.getBitmap();
-            pictureBox1.Refresh();
+            pictureBox1.Refresh(); //update picturbox with bitmap changes
 
             textBox1.Enabled = true; //reenable textbox
             buttonClicked = false; //return flag to original state
@@ -48,6 +48,11 @@ namespace ASE_Project_Ekauf
             throw new NotImplementedException("Picturebox interact handler not implemented.");
         }
 
+        /// <summary>
+        /// Reads through the user input from the textbox, separates commands into an array and calls each respective command.
+        /// </summary>
+        /// <param name="uInput">The user input from the textbox, in string form. </param>
+        /// <param name="BooseCanvas">The AppCanvas instance being used for bitmap operations. </param>
         private static void searchUInput(string uInput, AppCanvas BooseCanvas)
         {
             string[] inputLines = uInput.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
@@ -66,7 +71,7 @@ namespace ASE_Project_Ekauf
 
                 for (int j = 0; j < command.Length; j++)
                 {
-                    switch (command[j])
+                    switch (command[j]) //switch to check what command has been called.
                     {
                         case "moveto":
                             BooseCanvas.MoveTo(digits[0], digits[1]);

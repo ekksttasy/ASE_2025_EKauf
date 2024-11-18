@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ASE_Project_Ekauf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c2f46f7e7a1d8d643142272fe81d86f8ffb3d87")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bad7e6afa486b4a2b502fec9529d21a13f44297f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ASE_Project_Ekauf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ASE_Project_Ekauf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
