@@ -15,7 +15,7 @@ namespace ASE_Project_Ekauf
     
     public class AppCanvas : Canvas, ICanvas
     {
-        private Pen myPen;
+        public Pen myPen;
         private Bitmap bitmap;
         private int x_Pos = 0;
         private int y_Pos = 0;
