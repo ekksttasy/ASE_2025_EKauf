@@ -25,8 +25,8 @@ namespace ASE_Project_Ekauf
 
         Font defaultFont = new Font("Arial", 16, FontStyle.Bold);
 
-        Graphics g = Graphics.FromImage(new Bitmap(mapX, mapY));
-        public object booseMap;
+        Bitmap bitmap;
+        
 
         public AppCanvas(Color background_color)
         {
@@ -61,11 +61,9 @@ namespace ASE_Project_Ekauf
 
         public override void Clear()
         {
-            //clear bitmap to default color (assuming white)
-            using (Graphics g = Graphics.FromImage((Bitmap)booseMap))
-            {
-                g.Clear(background_color); 
-            }
+            //clear bitmap to default color
+            Graphics g = Graphics.FromImage(bitmap);
+            g.Clear(background_color); 
         }
 
         public override void Reset()
@@ -85,6 +83,7 @@ namespace ASE_Project_Ekauf
         public override void DrawTo(int x, int y)
         {
             //draw a line from previous pen position to specified pen position
+            Graphics g = Graphics.FromImage(bitmap);
             g.DrawLine(myPen, x_Pos, y_Pos, x, y);
 
             x_Pos = x;
@@ -101,6 +100,7 @@ namespace ASE_Project_Ekauf
         public void WriteText(string text)
         {
             Brush brush = new SolidBrush((Color)pColor);
+            Graphics g = Graphics.FromImage(bitmap);
             g.DrawString(text, defaultFont, brush, x_Pos, y_Pos);
         }
 
@@ -108,6 +108,7 @@ namespace ASE_Project_Ekauf
         {
             //draws a circle from pen position
             Circle myCircle = new Circle((Color)pColor, x_Pos, y_Pos, radius);
+            Graphics g = Graphics.FromImage(bitmap);
             myCircle.Draw(g, myPen, filled);
         }
 
@@ -115,6 +116,7 @@ namespace ASE_Project_Ekauf
         {
             //draws a rectangle from pen position
             Rect myRect = new Rect((Color)pColor, x_Pos, y_Pos, width, height);
+            Graphics g = Graphics.FromImage(bitmap);
             myRect.Draw(g, myPen, filled);
         }
 
@@ -126,7 +128,14 @@ namespace ASE_Project_Ekauf
 
         public override object getBitmap()
         {
-            return booseMap;
+            bitmap = new Bitmap(mapX, mapY);
+
+
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.Clear(Color.Gray);
+            }
+            return bitmap;
         }
 
         public static implicit operator Image(AppCanvas v)
