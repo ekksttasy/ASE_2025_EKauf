@@ -26,7 +26,10 @@ namespace ASE_Project_Ekauf
             this.y = y;
         }
 
-
+        protected void Draw(Graphics g, Pen pen, bool filled)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

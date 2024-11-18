@@ -27,7 +27,8 @@ namespace ASE_Project_Ekauf
             string uInput = textBox1.Text;
             textBox1.Enabled = false; //stop text being inputted while boose code is running
 
-            searchUInput(uInput); //run boose code
+            searchUInput(uInput, BooseCanvas); //run boose code
+            pictureBox1.Image = (Bitmap)BooseCanvas.getBitmap();
             pictureBox1.Refresh();
 
             textBox1.Enabled = true; //reenable textbox
@@ -47,7 +48,7 @@ namespace ASE_Project_Ekauf
             throw new NotImplementedException("Picturebox interact handler not implemented.");
         }
 
-        private static void searchUInput(string uInput)
+        private static void searchUInput(string uInput, AppCanvas BooseCanvas)
         {
             string[] inputLines = uInput.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -57,6 +58,12 @@ namespace ASE_Project_Ekauf
                 var digitsString = Regex.Matches(inputLines[i], @"\d+").Cast<Match>().Select(m => m.Value).ToArray(); //separate numerical identifiers to an array
                 int[] digits = digitsString.Select(s => int.Parse(s)).ToArray();
 
+                for (int x = 0; x < command.Length; x++)
+                {
+                    string meow = command[x].ToString();
+                    Debug.WriteLine(meow);
+                }
+
                 for (int j = 0; j < command.Length; j++)
                 {
                     switch (command[j])
@@ -65,10 +72,16 @@ namespace ASE_Project_Ekauf
                             BooseCanvas.MoveTo(digits[0], digits[1]);
                             break;
                         case "pen":
+                            BooseCanvas.SetColour(digits[0], digits[1], digits[2]);
                             break;
                         case "circle":
+                            BooseCanvas.Circle(digits[0], true);
                             break;
                         case "rect":
+                            BooseCanvas.Rect(digits[0], digits[1], true);
+                            break;
+                        case "drawto":
+                            BooseCanvas.DrawTo(digits[0], digits[1]);
                             break;
                         default:
                             Console.WriteLine($"{inputLines[i]} is not a valid command.");

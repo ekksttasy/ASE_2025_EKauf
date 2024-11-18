@@ -12,27 +12,37 @@ namespace ASE_Project_Ekauf
     /// <summary>
     /// Class implements ICanvas from Boose to render Boose code on form.
     /// </summary>
+    
     public class AppCanvas : Canvas, ICanvas
     {
-        private object pColor;
         private Pen myPen;
+        private Bitmap bitmap;
         private int x_Pos = 0;
         private int y_Pos = 0;
-        private Color background_color = Color.Gray;
+        private Color background_color;
+        private object pColor;
 
-        static int mapX = 256;
-        static int mapY = 256;
+        private static int mapX = 1080;
+        private static int mapY = 1080;
 
         Font defaultFont = new Font("Arial", 16, FontStyle.Bold);
 
-        Bitmap bitmap;
-        
-
+        /// <summary>
+        /// Constructor for new AppCanvas
+        /// </summary>
+        /// <param name="background_color"></param>
         public AppCanvas(Color background_color)
         {
-            this.background_colour = background_color;  
+            this.background_color = background_color;
+            bitmap = new Bitmap(mapX, mapY);
+            pColor = Color.FromArgb(0, 0, 0);
+            myPen = new Pen((Color)pColor, 3);
+            Clear();
         }
 
+        /// <summary>
+        /// Object form of pen color. 
+        /// </summary>
         public override object PenColour
         {
             //retrieve/change pen color
@@ -40,107 +50,156 @@ namespace ASE_Project_Ekauf
             set;
         }
 
+        /// <summary>
+        /// Changes pen color using RGB integer values. Must be between 0 and 255 for a valid color.
+        /// </summary>
+        /// <param name="red">The integer representing red. </param>
+        /// <param name="green">The integer representing green. </param>
+        /// <param name="blue">The integer representing blue. </param>
         public override void SetColour(int red, int green, int blue)
         {
             pColor = Color.FromArgb(red, green, blue);
-            Debug.WriteLine("Color is set to RGB {pcolor}");
+            myPen.Color  = (Color)pColor;
+            Debug.WriteLine($"Color is set to RGB {pColor}");
         }
+
+        /// <summary>
+        /// The X Position of the pen.
+        /// </summary>
         public override int Xpos
         {
-            //pen X position
             get;
             set;
         }
 
+        /// <summary>
+        /// The Y Position of the pen.
+        /// </summary>
         public override int Ypos
         {
-            // pen Y position
             get;
             set;
         }
 
+        /// <summary>
+        /// Resets bitmap image to the default background color.
+        /// </summary>
         public override void Clear()
         {
-            //clear bitmap to default color
-            Graphics g = Graphics.FromImage(bitmap);
-            g.Clear(background_color); 
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.Clear(background_color);
+            }
+
         }
 
+        /// <summary>
+        /// Returns the pen to the starting position of (0,0) by changing the values of x_Pos and y_Pos.
+        /// </summary>
         public override void Reset()
         {
-            //return pen to (0,0)
             x_Pos = 0;
             y_Pos = 0;
         }
 
+        /// <summary>
+        /// Sets the display size of the bitmap output. This only changes the bitmap and not the size of the picture box.
+        /// 
+        /// If the picture box size is smaller than the new bitmap size, not all elements may be visible.
+        /// </summary>
+        /// <param name="width">The new x value defining the width of the bitmap. </param>
+        /// <param name="height">The new y value defining the height of the bitmap. </param>
         public override void Set(int width, int height)
         {
-            //set display size of output window
             int mapX = width;
             int mapY = height;
         }
 
+        /// <summary>
+        /// Draws a line from the pen's position to a given point.
+        /// </summary>
+        /// <param name="x">The x value of the point to be drawn to. </param>
+        /// <param name="y">The y value of the point to be drawn to. </param>
         public override void DrawTo(int x, int y)
         {
-            //draw a line from previous pen position to specified pen position
-            Graphics g = Graphics.FromImage(bitmap);
-            g.DrawLine(myPen, x_Pos, y_Pos, x, y);
-
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.DrawLine(myPen, x_Pos, y_Pos, x, y);
+            }
             x_Pos = x;
             y_Pos = y;
         }
 
+        /// <summary>
+        /// Moves the pen to a given point.
+        /// </summary>
+        /// <param name="x">The x value of the point to be moved to. </param>
+        /// <param name="y">The y value of the point to be moved to. </param>
         public override void MoveTo(int x, int y)
         {
-            //move pen to specified position
             x_Pos = x;
             y_Pos = y;
         }
 
+        /// <summary>
+        /// Writes a string of text to the bitmap from the current position of the pen.
+        /// </summary>
+        /// <param name="text">The string of text to be written. </param>
         public void WriteText(string text)
         {
             Brush brush = new SolidBrush((Color)pColor);
-            Graphics g = Graphics.FromImage(bitmap);
-            g.DrawString(text, defaultFont, brush, x_Pos, y_Pos);
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.DrawString(text, defaultFont, brush, x_Pos, y_Pos);
+            }
         }
 
+        /// <summary>
+        /// Calls the Draw method from the Circle class to draw a circle to the bitmap from the current pen position.
+        /// </summary>
+        /// <param name="radius">The radius of the circle to be drawn. </param>
+        /// <param name="filled">Flag marking whether the circle is to be drawn filled or not. True = filled, False = empty. </param>
         public override void Circle(int radius, bool filled)
         {
-            //draws a circle from pen position
             Circle myCircle = new Circle((Color)pColor, x_Pos, y_Pos, radius);
-            Graphics g = Graphics.FromImage(bitmap);
-            myCircle.Draw(g, myPen, filled);
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                myCircle.Draw(g, myPen, filled);
+            }
         }
 
+        /// <summary>
+        /// Calls the Draw method from the Rect class to draw a rectangle to the bitmap from the current pen position. 
+        /// </summary>
+        /// <param name="width">The x length of the rectangle to be drawn. </param>
+        /// <param name="height">The y length of the rectangle to be drawn. </param>
+        /// <param name="filled">Flag marking whether the rectangle is to be drawn filled or not. True = filled, False = empty. </param>
         public override void Rect(int width, int height, bool filled)
         {
-            //draws a rectangle from pen position
             Rect myRect = new Rect((Color)pColor, x_Pos, y_Pos, width, height);
-            Graphics g = Graphics.FromImage(bitmap);
-            myRect.Draw(g, myPen, filled);
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                myRect.Draw(g, myPen, filled);
+            }
         }
 
+        /// <summary>
+        /// Calls the Draw method from the Triangle class to draw a triangle to the bitmap from the current pen position.
+        /// </summary>
+        /// <param name="width">The x length of the base of the triangle to be drawn. </param>
+        /// <param name="height">The y length of the triangle to be drawn. </param>
         public override void Tri(int width, int height)
         {
-            //draws a triangle from pen position
             Debug.WriteLine("Triangle method not yet implemented");
         }
 
+        /// <summary>
+        /// Retrieves the bitmap graphics object to be drawn on.
+        /// </summary>
+        /// <returns>'bitmap' - The bitmap to be used in drawing methods. </returns>
         public override object getBitmap()
         {
-            bitmap = new Bitmap(mapX, mapY);
-
-
-            using (Graphics g = Graphics.FromImage(bitmap))
-            {
-                g.Clear(Color.Gray);
-            }
             return bitmap;
-        }
-
-        public static implicit operator Image(AppCanvas v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

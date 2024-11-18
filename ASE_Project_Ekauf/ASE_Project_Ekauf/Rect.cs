@@ -34,7 +34,7 @@ namespace ASE_Project_Ekauf
         /// <param name="g"></param>
         /// <param name="pen"></param>
         /// <param name="filled"></param>
-        public void Draw(Graphics g, Pen pen, bool filled)
+        new public void Draw(Graphics g, Pen pen, bool filled)
         {
             g.DrawRectangle(pen, x, y, width, height);
         }

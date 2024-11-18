@@ -57,7 +57,7 @@
             // 
             pictureBox1.Location = new Point(395, 21);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(393, 321);
+            pictureBox1.Size = new Size(824, 594);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -66,7 +66,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1231, 627);
             Controls.Add(pictureBox1);
             Controls.Add(textBox1);
             Controls.Add(button1);
