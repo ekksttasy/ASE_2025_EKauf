@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Drawing.Text;
 using System.Text.RegularExpressions;
 using BOOSE;
 using static System.Windows.Forms.LinkLabel;
@@ -8,11 +9,13 @@ namespace ASE_Project_Ekauf
     public partial class Form1 : Form
     {
         private AppCanvas BooseCanvas;
+        new private string about = AboutBOOSE.about();
 
         public Form1()
         {
             InitializeComponent();
-            Debug.WriteLine(AboutBOOSE.about());
+            
+            Debug.WriteLine(about);
             BooseCanvas = new AppCanvas(Color.Gray);
 
             Bitmap myBooseMap= (Bitmap)BooseCanvas.getBitmap();   
