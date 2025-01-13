@@ -1,4 +1,5 @@
-﻿using BOOSE;
+﻿using ASE_Project_Ekauf.Shapes;
+using BOOSE;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +13,7 @@ namespace ASE_Project_Ekauf
     /// <summary>
     /// Class implements ICanvas from Boose to render Boose code on form.
     /// </summary>
-    
+
     public class AppCanvas : Canvas, ICanvas
     {
         public Pen myPen;
@@ -161,7 +162,7 @@ namespace ASE_Project_Ekauf
         /// <param name="filled">Flag marking whether the circle is to be drawn filled or not. True = filled, False = empty. </param>
         public override void Circle(int radius, bool filled)
         {
-            Circle myCircle = new Circle((Color)pColor, x_Pos, y_Pos, radius);
+            Shapes.Circle myCircle = new Shapes.Circle((Color)pColor, x_Pos, y_Pos, radius);
             using (Graphics g = Graphics.FromImage(bitmap))
             {
                 myCircle.Draw(g, myPen, filled);
@@ -176,7 +177,7 @@ namespace ASE_Project_Ekauf
         /// <param name="filled">Flag marking whether the rectangle is to be drawn filled or not. True = filled, False = empty. </param>
         public override void Rect(int width, int height, bool filled)
         {
-            Rect myRect = new Rect((Color)pColor, x_Pos, y_Pos, width, height);
+            Shapes.Rect myRect = new Shapes.Rect((Color)pColor, x_Pos, y_Pos, width, height);
             using (Graphics g = Graphics.FromImage(bitmap))
             {
                 myRect.Draw(g, myPen, filled);

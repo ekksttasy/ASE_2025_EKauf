@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BOOSE;
 
-namespace ASE_Project_Ekauf
+namespace ASE_Project_Ekauf.Shapes
 {
     /// <summary>
     /// Rectangle class to define new rectangle objects.

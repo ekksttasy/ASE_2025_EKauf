@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ASE_Project_Ekauf",
+    "\\ASE_Project_Ekauf\\ASE_Project_Ekauf",
+    "\\ASE_Unit_Tests",
+    "\\ASE_Unit_Tests\\obj"
   ],
+  "SelectedNode": "\\ASE_Project_Ekauf\\ASE_Project_Ekauf\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }

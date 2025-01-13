@@ -9,18 +9,24 @@ namespace ASE_Project_Ekauf
     public partial class Form1 : Form
     {
         private AppCanvas BooseCanvas;
-        new private string about = AboutBOOSE.about();
+        private CommandFactory CmdFactory;
+        private ParserPrograms.StoredProgram Program;
+        private ParserPrograms.Parser ParserF;
 
         public Form1()
         {
             InitializeComponent();
             
-            Debug.WriteLine(about);
+            Debug.WriteLine(BOOSE.AboutBOOSE.about());
             BooseCanvas = new AppCanvas(Color.Gray);
 
             Bitmap myBooseMap= (Bitmap)BooseCanvas.getBitmap();   
             pictureBox1.Image = myBooseMap;
+            CmdFactory = new ParserPrograms.MyCommandFactory();
+            Program = new ParserPrograms.StoredProgram(BooseCanvas);
+            ParserF = new ParserPrograms.Parser(CmdFactory, Program);  
         }
+
 
         private bool buttonClicked = false; //flag to mark if textbox has been run
 
@@ -30,7 +36,9 @@ namespace ASE_Project_Ekauf
             string uInput = textBox1.Text;
             textBox1.Enabled = false; //stop text being inputted while boose code is running
 
-            searchUInput(uInput, BooseCanvas); //run boose code
+            ParserF.ParseProgram(uInput);
+            Program.Run();
+            //searchUInput(uInput, BooseCanvas); //run boose code
             pictureBox1.Image = (Bitmap)BooseCanvas.getBitmap();
             pictureBox1.Refresh(); //update picturbox with bitmap changes
 
@@ -50,6 +58,10 @@ namespace ASE_Project_Ekauf
         {
             throw new NotImplementedException("Picturebox interact handler not implemented.");
         }
+
+
+
+
 
         /// <summary>
         /// Reads through the user input from the textbox, separates commands into an array and calls each respective command.

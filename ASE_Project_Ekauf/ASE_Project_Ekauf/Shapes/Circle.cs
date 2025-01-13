@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BOOSE;
 
-namespace ASE_Project_Ekauf
+namespace ASE_Project_Ekauf.Shapes
 {
     /// <summary>
     /// Circle class to define new circle objects.
@@ -33,7 +33,7 @@ namespace ASE_Project_Ekauf
         /// <param name="filled">Flag to mark whether the circle is filled or not. True = filled, False = empty. </param>
         new public void Draw(Graphics g, Pen pen, bool filled)
         {
-            g.DrawEllipse(pen, this.x, this.y, (this.radius*2), (this.radius*2));
+            g.DrawEllipse(pen, x, y, radius * 2, radius * 2);
         }
     }
 }

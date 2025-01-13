@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using BOOSE;
 
-namespace ASE_Project_Ekauf
+namespace ASE_Project_Ekauf.Shapes
 {
     /// <summary>
     /// Parent class to all writeable shape objects.
     /// </summary>
 
-    abstract class Shape : Object
+    abstract class Shape : object
     {
         protected Color color; // color var protected
         protected int x, y; // position var protected 
