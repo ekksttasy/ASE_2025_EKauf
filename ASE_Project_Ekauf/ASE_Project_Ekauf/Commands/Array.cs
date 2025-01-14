@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BOOSE;
 
-namespace ASE_Project_Ekauf.Variables
+namespace ASE_Project_Ekauf.Commands
 {
     class Array : BOOSE.Array
     {
