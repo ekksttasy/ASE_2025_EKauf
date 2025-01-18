@@ -27,6 +27,9 @@ namespace ASE_Project_Ekauf.ParserPrograms
 
         protected Stack ProgramStack = new Stack();
 
+        /// <summary>
+        /// PC "Program Counter" getter and setter.
+        /// </summary>
         public int PC
         {
             get
@@ -63,7 +66,7 @@ namespace ASE_Project_Ekauf.ParserPrograms
             int num = FindMethod(MethodName);
             if (num == -1)
             {
-                throw new StoredProgramException("No such varieble");
+                throw new StoredProgramException("Variable does not exist");
             }
 
             return (Method)Methods[num];
@@ -98,7 +101,7 @@ namespace ASE_Project_Ekauf.ParserPrograms
             int num = FindVariable(VarName);
             if (num == -1)
             {
-                throw new StoredProgramException("No such varieble");
+                throw new StoredProgramException("No such variable");
             }
 
             return (Evaluation)Variables[num];

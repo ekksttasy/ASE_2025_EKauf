@@ -14,7 +14,7 @@ namespace ASE_Project_Ekauf.ParserPrograms
             commandType = commandType.ToLower().Trim();
             if (commandType.Equals("moveto"))
             {
-                return new Variables.MoveTo();
+                return new Commands.MoveTo();
             }
 
             if (commandType.Equals("drawto"))

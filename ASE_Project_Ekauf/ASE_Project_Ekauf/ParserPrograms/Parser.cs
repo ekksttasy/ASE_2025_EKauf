@@ -17,21 +17,20 @@ namespace ASE_Project_Ekauf.ParserPrograms
             MyFactory = Factory;
         }
 
-        public ICommand ParseCommand(string Line)
+        public ICommand ParseCommand(string cmd)
         {
-            if (Line[0] == '*')
+            if (cmd[0] == '*')
             {
                 return null;
             }
 
-            Line = TidyExpression(Line);
-            string[] array = Line.Split(' ');
-            _ = new string[10];
-            string text = array[0];
-            string text2 = "";
+            cmd = CleanHouse(cmd);
+            string[] array = cmd.Split(' ');
+            string command = array[0];
+            string parameters = "";
             for (int i = 1; i < array.Length; i++)
             {
-                text2 = text2 + array[i] + " ";
+                parameters += array[i] + " ";
             }
 
             if (array.Length > 1 && array[1].Trim().Equals("=") && !text.Equals("int") && !text.Equals("real") && !text.Equals("boolean"))
@@ -45,11 +44,11 @@ namespace ASE_Project_Ekauf.ParserPrograms
                 Evaluation variable = Program.GetVariable(text);
                 if (variable is Int)
                 {
-                    text = "int";
+                    command = "int";
                 }
                 else if (variable is Real)
                 {
-                    text = "real";
+                    command = "real";
                 }
                 else
                 {
@@ -62,10 +61,10 @@ namespace ASE_Project_Ekauf.ParserPrograms
                 }
             }
 
-            ICommand command = MyFactory.MakeCommand(text);
-            command.Set(Program, text2);
-            command.Compile();
-            return command;
+            ICommand cmdParsed = MyFactory.MakeCommand(command);
+            cmdParsed.Set(Program, parameters);
+            cmdParsed.Compile();
+            return cmdParsed;
         }
 
         public void ParseProgram(string program)
@@ -122,15 +121,15 @@ namespace ASE_Project_Ekauf.ParserPrograms
             }
         }
 
-        private string TidyExpression(string expression)
+        private string CleanHouse(string expression)
         {
-            expression = expression.Trim();
-            expression = expression.Replace("=", " = ");
-            expression = expression.Replace("+", " + ");
-            expression = expression.Replace("/", " / ");
-            expression = expression.Replace("*", " * ");
-            expression = expression.Replace("  ", " ");
-            expression = expression.Replace("  ", " ");
+            expression = expression.Trim()
+                        .Replace("=", " = ")
+                        .Replace("+", " + ")
+                        .Replace("/", " / ")
+                        .Replace("*", " * ")
+                        .Replace("  ", " ")
+                        .Replace("  ", " ");
             return expression;
         }
     }
