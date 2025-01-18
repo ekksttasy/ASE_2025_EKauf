@@ -196,7 +196,10 @@ namespace ASE_Project_Ekauf.Commands
 
         private void CheckIndex(int row, int col)
         {
-            //HELPif(row >= )
+            if (row >= myRows || col >= myCols)
+            {
+                throw new CommandException("Array index out of bounds");
+            }
         }
 
         public void SetIntArray(int val, int row, int col)
