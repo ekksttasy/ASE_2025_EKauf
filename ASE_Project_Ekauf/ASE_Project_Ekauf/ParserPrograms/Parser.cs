@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BOOSE;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ASE_Project_Ekauf.ParserPrograms
 {
@@ -15,7 +16,7 @@ namespace ASE_Project_Ekauf.ParserPrograms
         {
             this.Program = Program;
             MyFactory = Factory;
-        }
+        } 
 
         public ICommand ParseCommand(string cmd)
         {
@@ -33,15 +34,12 @@ namespace ASE_Project_Ekauf.ParserPrograms
                 parameters += array[i] + " ";
             }
 
-            if (array.Length > 1 && array[1].Trim().Equals("=") && !text.Equals("int") && !text.Equals("real") && !text.Equals("boolean"))
+            if (CheckCustomVar(array, command))
             {
-                if (!Program.VariableExists(text))
-                {
-                    throw new ParserException("Use of undefined variable" + text);
-                }
 
-                text2 = text + " " + text2.Trim();
-                Evaluation variable = Program.GetVariable(text);
+                Evaluation variable = Program.GetVariable(command);
+                parameters = command + " " + parameters.Trim();
+
                 if (variable is Int)
                 {
                     command = "int";
@@ -57,7 +55,7 @@ namespace ASE_Project_Ekauf.ParserPrograms
                         throw new ParserException("unknown variable type");
                     }
 
-                    text = "boolean";
+                    command = "boolean";
                 }
             }
 
@@ -65,6 +63,19 @@ namespace ASE_Project_Ekauf.ParserPrograms
             cmdParsed.Set(Program, parameters);
             cmdParsed.Compile();
             return cmdParsed;
+        }
+
+        private bool CheckCustomVar(string[] array, string variable)
+        {
+            if (array.Length > 1 && array[1].Trim().Equals("=") && !variable.Equals("int") && !variable.Equals("real") && !variable.Equals("boolean"))
+            {
+                if(!Program.VariableExists(variable))
+                {
+                    throw new ParserException("Variable" + variable + "is undefined");
+                }
+                return true;
+            }
+            return false;
         }
 
         public void ParseProgram(string program)
