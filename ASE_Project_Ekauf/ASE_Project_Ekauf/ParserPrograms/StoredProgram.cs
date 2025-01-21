@@ -11,30 +11,30 @@ namespace ASE_Project_Ekauf.ParserPrograms
 {
     public class StoredProgram : BOOSE.StoredProgram
     {
-        private int x = base.pc;
         public StoredProgram(ICanvas canvas) : base(canvas)
         {
         }
 
         private object NextCommand()
         {
-            return this[x++];
+            
+            return this[PC++];
         }
         public override void Run()
         {
-            int x = 0;
+            PC = 0;
             while (Commandsleft())
             {
                 ICommand command = (ICommand)NextCommand();
                 try
                 {
-                    x++;
+                    PC++;
                     command.Execute();
                 }
                 catch (BOOSEException ex)
                 {
                     SyntaxOk = false;
-                    throw new StoredProgramException(ex.Message + " at line " + x);
+                    throw new StoredProgramException(ex.Message + " at line " + PC);
                 }
             }
         }

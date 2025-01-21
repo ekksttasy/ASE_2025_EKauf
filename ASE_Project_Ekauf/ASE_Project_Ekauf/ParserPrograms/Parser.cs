@@ -65,9 +65,9 @@ namespace ASE_Project_Ekauf.ParserPrograms
             return cmdParsed;
         }
 
-        private bool CheckCustomVar(string[] array, string variable)
+        private bool CheckCustomVar(string[] cmdLine, string variable)
         {
-            if (array.Length > 1 && array[1].Trim().Equals("=") && !variable.Equals("int") && !variable.Equals("real") && !variable.Equals("boolean"))
+            if (cmdLine.Length > 1 && cmdLine[1].Trim().Equals("=") && !variable.Equals("int") && !variable.Equals("real") && !variable.Equals("boolean"))
             {
                 if(!Program.VariableExists(variable))
                 {
@@ -76,8 +76,10 @@ namespace ASE_Project_Ekauf.ParserPrograms
                 return true;
             }
             return false;
-        }
+        } 
 
+
+        //using BOOSE.Parser.ParseProgram
         public void ParseProgram(string program)
         {
             program += "\nint endofprogram = 0";
@@ -85,11 +87,7 @@ namespace ASE_Project_Ekauf.ParserPrograms
             string[] array = program.Split('\n');
             Program.SyntaxOk = false;
             for (int i = 0; i < array.Length; i++)
-            {
-                if (i > 10)
-                {
-                    throw new RestrictionException("Program exceeds restricted size");
-                }
+            { 
 
                 array[i] = array[i].Trim();
                 if (array[i].Equals(""))
